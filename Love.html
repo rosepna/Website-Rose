@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Untukmu, Cintaku 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ff758c, #ff7eb3);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .container {
+      margin-top: 100px;
+      z-index: 2;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 3em;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    p {
+      font-size: 1.5em;
+      margin-top: 20px;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .hati {
+      font-size: 4em;
+      animation: lompat 1s infinite;
+      margin-top: 40px;
+    }
+
+    .btn {
+      margin-top: 20px;
+      font-size: 1.2em;
+      background: white;
+      color: #ff4081;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      margin: 10px 5px;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes lompat {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .flying-heart {
+      position: absolute;
+      font-size: 20px;
+      animation: terbang 4s linear forwards;
+      color: white;
+      pointer-events: none;
+    }
+
+    @keyframes terbang {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-500px) scale(2);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>💖 Aku Cinta Kamu 💖</h1>
+    <p>Hari ini, aku cuma mau bilang... aku sayang banget sama kamu 🥹</p>
+    <div class="hati">❤️</div>
+
+    <!-- Tombol Lagu & Balas Cinta -->
+    <button class="btn" onclick="playLagu()">Suara Hatiku Untukmu 💖</button>
+    <button class="btn" onclick="pauseLagu()">Matikan 💔</button>
+    <button class="btn" onclick="balasCinta()">Balas Cinta 💌</button>
+
+    <!-- Audio -->
+    <audio id="musikCinta" loop>
+      <source src="toembul.mp3" type="audio/mp3" />
+      Maaf, browser kamu tidak mendukung audio.
+    </audio>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const musik = document.getElementById("musikCinta");
+
+    function playLagu() {
+      musik.play();
+    }
+
+    function pauseLagu() {
+      musik.pause();
+    }
+
+    function balasCinta() {
+      alert("Aku juga sayang kamu! 😳❤️");
+    }
+
+    // Efek hati beterbangan
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('flying-heart');
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.textContent = '❤️';
+      document.body.appendChild(heart);
+      setTimeout(() => {
+        heart.remove();
+      }, 4000);
+    }, 300);
+  </script>
+</body>
+</html>
